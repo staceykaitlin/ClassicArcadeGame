@@ -99,7 +99,7 @@ let allEnemies = enemyPosition.map((y, index) => {
 //Runs the reset function and logs won to the console
 function won (){
   reset();
-  console.log('won');
+  console.log('You have won!');
 }
 
 //Resets the bugs
