@@ -1,7 +1,7 @@
 # Classic Arcade Game Clone Project
 A project for the Udacity Front End Developer Nanodegree, developed using HTML, CSS and Javascript.
 
-##How to play
+## How to play
 Using the arrow keys on your keyboard, move from the grass to the water while avoiding enemies.
 
 ⋅⋅* If you collide with a bug the game will reset
