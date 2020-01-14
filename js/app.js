@@ -11,27 +11,32 @@ var Enemy = function(x,y) {
 
 
 Enemy.prototype.update = function(dt) {
-  this.x += 150 * dt;
+  this.x += 95 * dt;
   if (this.x > ctx.canvas.width + this.width){
       this.x = -200 * Math.floor(Math.random() * 4) + 1; //Resets the bugs and places them at a random number between 1 - 4
   } else {
-      this.x += 150 * dt; //Makes bugs continue
+      this.x += 95 * dt; //Makes bugs continue
   }
 
   //Checks if there has been a collision
-  if (collision(player.x, player.y, player.width, player.height, this.x, this.y, this.width, this.height)){
-    this.collision = true;
 
-    //resets character position
-    if (player) {
-       player.x = 202;
-       player.y = 400;
-    }
+  if (this.x < player.x + 60 &&
+     this.x + 60 > player.x &&
+     this.y < player.y + 40 &&
+     40 + this.y > player.y) {
+       this.collision = true;
 
-  } else {
-      this.collision = false;
-    }
-  };
+       if (player) {
+         player.x = 202;
+         player.y = 400;
+       }
+
+       else {
+         this.collision = false;
+       }
+     }
+
+};
 
 
 Enemy.prototype.render = function() {
@@ -99,16 +104,10 @@ let allEnemies = enemyPosition.map((y, index) => {
 //Runs the reset function and logs won to the console
 function won (){
   reset();
-  console.log('You have won!');
+  console.log('won');
 }
 
 //Resets the bugs
 function reset (){
   allEnemies = [];
-}
-
-//Function to check for collision based on location of enemy and player
-function collision(px, py, pw, ph, ex, ey, ew, eh) {
-
-  return (Math.abs(px - ex) * 2 < pw + ew) && (Math.abs(py - ey) * 2 < ph + eh);
 }
